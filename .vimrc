@@ -121,7 +121,7 @@ set cursorcolumn
 set hlsearch
 
 " 设置 gvim 显示字体
-set guifont=YaHei_Consolas_Hybrid:h16
+set guifont=YaHei_Consolas_Hybrid:h18
 
 " 设置状态栏主题风格
 let g:Powerline_colorscheme='solarized256'
@@ -285,3 +285,6 @@ map <S-D><S-E> :%s/^\s*\n//g<CR>
 nnoremap <Leader>m :MaximizerToggle<CR>
 vnoremap <Leader>m :MaximizerToggle<CR>gv
 inoremap <Leader>m <C-o>:MaximizerToggle<CR>
+
+" 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
+unmap nw
