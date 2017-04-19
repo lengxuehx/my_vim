@@ -4,8 +4,8 @@ let mapleader=";"
 set encoding=utf-8
 
 " 定义快捷键到行首和行尾
-nmap lb 0
-nmap le $
+"nmap lb 0
+"nmap le $
 " 设置快捷键将选中文本块复制至系统剪贴板
  vnoremap <Leader>y "*y
  vnoremap <Leader>yy "*yy
@@ -84,6 +84,7 @@ Plugin 'tpope/vim-unimpaired'
 "Plugin 'junegunn/fzf'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'szw/vim-maximizer'
+"Plugin 'vim-syntastic/syntastic'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -292,3 +293,12 @@ inoremap <Leader>m <C-o>:MaximizerToggle<CR>
 
 " 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
 unmap nw
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
