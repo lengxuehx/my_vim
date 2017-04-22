@@ -4,8 +4,8 @@ let mapleader=";"
 set encoding=utf-8
 
 " 定义快捷键到行首和行尾
-"nmap lb 0
-"nmap le $
+nmap lb 0
+nmap le $
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
 "vnoremap <Leader>z <S-V>"+y
@@ -85,7 +85,6 @@ Plugin 'tpope/vim-unimpaired'
 "Plugin 'junegunn/fzf'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'szw/vim-maximizer'
-"Plugin 'vim-syntastic/syntastic'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -94,8 +93,8 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
-"colorscheme molokai
-colorscheme solarized
+colorscheme molokai
+"colorscheme solarized
 let g:molokai_original = 1
 
 
@@ -197,6 +196,10 @@ let NERDTreeAutoDeleteBuffer=1
 "map <Leader>bc :close<cr>
 
 " YCM 补全菜单配色
+" 设置python解释器，不要设置为绝对路径
+"let g:ycm_python_binary_path="/opt/py_virtualenvs/progress_management/bin/python"
+let g:ycm_python_binary_path="python"
+let g:ycm_server_python_interpreter = 'python'
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments=1
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
@@ -290,6 +293,7 @@ inoremap <Leader>m <C-o>:MaximizerToggle<CR>
 
 " 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
 unmap nw
+<<<<<<< HEAD
 
 "全选
 nmap <C-a> gg<S-v>G
