@@ -7,10 +7,10 @@ set encoding=utf-8
 "nmap lb 0
 "nmap le $
 " 设置快捷键将选中文本块复制至系统剪贴板
- vnoremap <Leader>y "*y
- vnoremap <Leader>yy "*yy
+vnoremap <Leader>y "+y
+"vnoremap <Leader>z <S-V>"+y
 " 设置快捷键将系统剪贴板内容粘贴至 vim
-nmap <Leader>p ".p
+nmap <Leader>p "+p
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
@@ -33,7 +33,8 @@ nnoremap <Leader>jw <C-W>j
 nmap <Leader>M %
 
 " 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+command!VIMRCLOAD source $MYVIMRC
+"autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 开启实时搜索功能
 set incsearch
@@ -231,12 +232,12 @@ map <leader>gc :Gcommit<CR>
 map <leader>gp :Git push<CR>
 
 " 配对符号
-vnoremap ( s()<Esc>P<Esc>
-vnoremap [ s[]<Esc>P<Esc>
-vnoremap { s{}<Esc>P<Esc>
-vnoremap <leader>' s''<Esc>P<Esc>
-vnoremap <leader>" s""<Esc>P<Esc>
-vnoremap <leader>c s<Esc>pl2x
+"noremap ( s()<Esc>P<Esc>
+"noremap [ s[]<Esc>P<Esc>
+"noremap { s{}<Esc>P<Esc>
+"noremap ' s''<Esc>P<Esc>
+"noremap " s""<Esc>P<Esc>
+"noremap c s<Esc>pl2x
 
 " map select all
 map ,a ggvg
@@ -290,11 +291,14 @@ inoremap <Leader>m <C-o>:MaximizerToggle<CR>
 " 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
 unmap nw
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"全选
+nmap <C-a> gg<S-v>G
+
+"" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
