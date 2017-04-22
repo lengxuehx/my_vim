@@ -293,7 +293,6 @@ inoremap <Leader>m <C-o>:MaximizerToggle<CR>
 
 " 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
 unmap nw
-<<<<<<< HEAD
 
 "全选
 nmap <C-a> gg<S-v>G
