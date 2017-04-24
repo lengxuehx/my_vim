@@ -4,8 +4,8 @@ let mapleader=";"
 set encoding=utf-8
 
 " 定义快捷键到行首和行尾
-nmap lb 0
-nmap le $
+"nmap lb 0
+"nmap le $
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
 "vnoremap <Leader>z <S-V>"+y
@@ -93,8 +93,8 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
-colorscheme molokai
-"colorscheme solarized
+"colorscheme molokai
+colorscheme solarized
 let g:molokai_original = 1
 
 
