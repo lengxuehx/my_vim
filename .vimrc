@@ -30,8 +30,7 @@ nnoremap <Leader>kw <C-W>k
 nnoremap <Leader>jw <C-W>j
 
 " 让配置变更立即生效
-command!VIMRCLOAD source $MYVIMRC
-"autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 开启实时搜索功能
 set incsearch
@@ -90,8 +89,8 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
-"colorscheme molokai
-colorscheme solarized
+colorscheme molokai
+"colorscheme solarized
 let g:molokai_original = 1
 
 
@@ -232,12 +231,12 @@ map <leader>gc :Gcommit<CR>
 map <leader>gp :Git push<CR>
 
 " 配对符号
-"noremap ( s()<Esc>P<Esc>
-"noremap [ s[]<Esc>P<Esc>
-"noremap { s{}<Esc>P<Esc>
-"noremap ' s''<Esc>P<Esc>
-"noremap " s""<Esc>P<Esc>
-"noremap c s<Esc>pl2x
+vnoremap ( s()<Esc>P<Esc>
+vnoremap [ s[]<Esc>P<Esc>
+vnoremap { s{}<Esc>P<Esc>
+vnoremap <leader>' s''<Esc>P<Esc>
+vnoremap <leader>" s""<Esc>P<Esc>
+vnoremap <leader>c s<Esc>pl2x
 
 " map select all
 map ,a ggvg
@@ -291,14 +290,5 @@ inoremap <Leader>m <C-o>:MaximizerToggle<CR>
 " 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
 unmap nw
 
-"全选
-nmap <C-a> gg<S-v>G
-
-"" syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
