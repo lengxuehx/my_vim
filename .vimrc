@@ -6,6 +6,11 @@ set encoding=utf-8
 " 定义快捷键到行首和行尾
 nmap <Leader>lb 0
 nmap <Leader>le $
+" 到行的第一个和最后一个非空白字符
+nmap <leader>lf ^
+nmap <leader>ll g_
+" 最后修改的地方
+nmap <leader>lc ''
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
