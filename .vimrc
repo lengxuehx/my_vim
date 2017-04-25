@@ -4,13 +4,12 @@ let mapleader=";"
 set encoding=utf-8
 
 " 定义快捷键到行首和行尾
-"nmap lb 0
-"nmap le $
+nmap <Leader>lb 0
+nmap <Leader>le $
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
-"vnoremap <Leader>z <S-V>"+y
-" 设置快捷键将系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
+nmap <leader>d "+d
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
@@ -29,8 +28,6 @@ nnoremap <Leader>hw <C-W>h
 nnoremap <Leader>kw <C-W>k
 " 跳转至下方的子窗口
 nnoremap <Leader>jw <C-W>j
-" 定义快捷键在结对符之间跳转
-nmap <Leader>M %
 
 " 让配置变更立即生效
 command!VIMRCLOAD source $MYVIMRC
