@@ -292,3 +292,6 @@ inoremap <Leader>m <C-o>:MaximizerToggle<CR>
 
 " 搜索时下一个总是太慢，就是因为有这个映射和N键冲突
 unmap nw
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
