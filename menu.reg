@@ -1,0 +1,4 @@
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\*\Shell\Tab Edit with &Vim]
+[HKEY_CLASSES_ROOT\*\Shell\Tab Edit with &Vim\command]
+@="\"C:\\Program Files (x86)\\Vim\\vim80\\gvim.exe\" -p --remote-tab-silent \"%1\" \"%*\""
