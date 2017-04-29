@@ -310,7 +310,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " 设置语法检查参数
-let g:syntastic_python_checker='flake8'
+let g:syntastic_python_checkers=[ 'flake8' ]
 let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
 
 set tw=200
