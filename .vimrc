@@ -56,7 +56,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'kshenoy/vim-signature'
@@ -86,6 +86,8 @@ Plugin 'tpope/vim-unimpaired'
 "Plugin 'junegunn/fzf'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'szw/vim-maximizer'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-repeat' 
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -297,3 +299,18 @@ unmap nw
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
+
+"syntastic插件设置
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" 设置语法检查参数
+let g:syntastic_python_checker='flake8'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
+
+set tw=200
