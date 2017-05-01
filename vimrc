@@ -4,13 +4,17 @@ let mapleader=";"
 set encoding=utf-8
 
 " 定义快捷键到行首和行尾
-"nmap lb 0
-"nmap le $
+nmap <Leader>lb 0
+nmap <Leader>le $
+" 到行的第一个和最后一个非空白字符
+nmap <leader>lf ^
+nmap <leader>ll g_
+" 最后修改的地方
+nmap <leader>lc ''
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
-"vnoremap <Leader>z <S-V>"+y
-" 设置快捷键将系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
+nmap <leader>d "+d
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
@@ -29,12 +33,9 @@ nnoremap <Leader>hw <C-W>h
 nnoremap <Leader>kw <C-W>k
 " 跳转至下方的子窗口
 nnoremap <Leader>jw <C-W>j
-" 定义快捷键在结对符之间跳转
-nmap <Leader>M %
 
 " 让配置变更立即生效
-command!VIMRCLOAD source $MYVIMRC
-"autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 开启实时搜索功能
 set incsearch
@@ -55,7 +56,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'kshenoy/vim-signature'
@@ -85,6 +86,8 @@ Plugin 'tpope/vim-unimpaired'
 "Plugin 'junegunn/fzf'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'szw/vim-maximizer'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-repeat' 
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -93,8 +96,8 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
-"colorscheme molokai
-colorscheme solarized
+colorscheme molokai
+"colorscheme solarized
 let g:molokai_original = 1
 
 
@@ -235,12 +238,12 @@ map <leader>gc :Gcommit<CR>
 map <leader>gp :Git push<CR>
 
 " 配对符号
-"noremap ( s()<Esc>P<Esc>
-"noremap [ s[]<Esc>P<Esc>
-"noremap { s{}<Esc>P<Esc>
-"noremap ' s''<Esc>P<Esc>
-"noremap " s""<Esc>P<Esc>
-"noremap c s<Esc>pl2x
+vnoremap ( s()<Esc>P<Esc>
+vnoremap [ s[]<Esc>P<Esc>
+vnoremap { s{}<Esc>P<Esc>
+vnoremap <leader>' s''<Esc>P<Esc>
+vnoremap <leader>" s""<Esc>P<Esc>
+vnoremap <leader>c s<Esc>pl2x
 
 " map select all
 map ,a ggvg
@@ -297,14 +300,21 @@ unmap nw
 "全选
 nmap <C-a> gg<S-v>G
 
-"" syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
 "以python脚本运行
 nmap <F5> !python %<CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+"syntastic插件设置
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers=[ 'flake8' ]
+let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
+
+set tw=200
