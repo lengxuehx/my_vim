@@ -305,3 +305,6 @@ nmap <C-a> gg<S-v>G
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
+
+"以python脚本运行
+nmap <F5> !python %<CR>
