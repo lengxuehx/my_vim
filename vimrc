@@ -3,6 +3,11 @@ let mapleader=";"
 
 set encoding=utf-8
 
+if has('win32') || has ('win64')
+  vnoremap <C-c> "*y 
+  vnoremap <C-v> "*p 
+endif
+
 " 定义快捷键到行首和行尾
 nmap <Leader>lb 0
 nmap <Leader>le $
@@ -13,8 +18,8 @@ nmap <leader>ll g_
 nmap <leader>lc ''
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
-nmap <Leader>p "+p
-nmap <leader>d "+d
+vnoremap <Leader>p "+p
+vnoremap <leader>d "+d
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
@@ -245,9 +250,6 @@ vnoremap <leader>' s''<Esc>P<Esc>
 vnoremap <leader>" s""<Esc>P<Esc>
 vnoremap <leader>c s<Esc>pl2x
 
-" map select all
-map ,a ggvg
-
 " 编辑vimrc 
 command!VIMRC tabedit $MYVIMRC
 
@@ -307,9 +309,9 @@ nmap <F5> !python %<CR>
 cmap w!! w !sudo tee > /dev/null %
 
 "syntastic插件设置
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
