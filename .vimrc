@@ -12,9 +12,9 @@ nmap <leader>ll g_
 " 最后修改的地方
 nmap <leader>lc ''
 " 设置快捷键将选中文本块复制至系统剪贴板
-vnoremap <Leader>y "+y
-nmap <Leader>p "+p
-nmap <leader>d "+d
+vnoremap <Leader>y "*y
+nmap <Leader>p "*p
+nmap <leader>d "*d
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
