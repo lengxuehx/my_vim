@@ -96,8 +96,8 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
-colorscheme molokai
-"colorscheme solarized
+"colorscheme molokai
+colorscheme solarized
 let g:molokai_original = 1
 
 
@@ -305,12 +305,18 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
 " 设置语法检查参数
 let g:syntastic_python_checkers=[ 'flake8' ]
-let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
+let g:syntastic_python_flake8_post_args='--ignore=E201,E203,E241,F405,E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
+"快捷打开关闭错误检测窗口
+noremap <leader>eo :SyntasticCheck<CR>:lopen<CR>
+noremap <leader>ec :lclose<CR>
 
+" 最大宽度
 set tw=200
+
+" 搜索到结尾不自动重头开始搜索 
+set nowrapscan
