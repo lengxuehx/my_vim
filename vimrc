@@ -101,8 +101,8 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
-"colorscheme molokai
-colorscheme solarized
+colorscheme molokai
+"colorscheme solarized
 let g:molokai_original = 1
 
 
@@ -195,6 +195,8 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
+" 忽略某些文件
+let NERDTreeIgnore = ['\.pyc$']
 
 "" 显示/隐藏 MiniBufExplorer 窗口
 "map <Leader>bl :MBEToggle<cr>
