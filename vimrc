@@ -179,6 +179,9 @@ nnoremap <Leader>tl :TagbarToggle<CR>
 let tagbar_width=32 
 " tagbar 子窗口中不显示冗余帮助信息 
 let g:tagbar_compact=1
+" 打开后鼠标跳转到标签栏
+let g:tagbar_autofocus=1
+ 
 
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
 nnoremap <Leader>sp :CtrlSF<CR>
@@ -320,7 +323,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " 设置语法检查参数
 let g:syntastic_python_checkers=[ 'flake8' ]
-let g:syntastic_python_flake8_post_args='--ignore=E201,E203,E241,F405,E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
+let g:syntastic_python_flake8_post_args='--ignore=E127,E121,E116,F401,E201,E203,E241,F405,E501,E128,E225,E265,E231,E272,E301,W,E222,E302,W391,E101,E221,E206,E226,E202,E228,E123,E303,E126 --max-line-length=200'
 "快捷打开关闭错误检测窗口
 noremap <leader>eo :SyntasticCheck<CR>:lopen<CR>
 noremap <leader>ec :lclose<CR>
