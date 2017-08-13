@@ -1,5 +1,5 @@
 #/bin/bash
-ln -s ~/SOURCE/vimfiles/vimrc ~/.vim/vimrc
+ln -s "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/vimrc ~/.vim/vimrc
 
 add-apt-repository ppa:jonathonf/vim
 apt update
