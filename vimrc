@@ -181,7 +181,8 @@ let tagbar_width=32
 let g:tagbar_compact=1
 " 打开后鼠标跳转到标签栏
 let g:tagbar_autofocus=1
- 
+" 全部折叠
+let g:tagbar_foldlevel=0
 
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
 nnoremap <Leader>sp :CtrlSF<CR>
