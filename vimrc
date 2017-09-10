@@ -51,53 +51,54 @@ set nocompatible
 " vim 自身命令行模式智能补全
 set wildmenu
 
-" vundle 环境设置
+" plug 环境设置
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-" vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/phd'
-Plugin 'Lokaltog/vim-powerline'
-"Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'kshenoy/vim-signature'
-Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/indexer.tar.gz'
-Plugin 'vim-scripts/DfrankUtil'
-Plugin 'vim-scripts/vimprj'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/DrawIt'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'fholgado/minibufexpl.vim'
-Plugin 'gcmt/wildfire.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'lilydjwg/fcitx.vim'
-"Plugin 'python-mode/python-mode'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-"Plugin 'junegunn/fzf'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'szw/vim-maximizer'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'tpope/vim-repeat' 
+"set rtp+=~/.vim/bundle/plug.vim
+" plug 管理的插件列表必须位于 plug#begin() 和 plug#end() 之间
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'vim-scripts/phd'
+Plug 'Lokaltog/vim-powerline'
+"Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'kshenoy/vim-signature'
+Plug 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/indexer.tar.gz'
+Plug 'vim-scripts/DfrankUtil'
+Plug 'vim-scripts/vimprj'
+Plug 'dyng/ctrlsf.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DrawIt'
+Plug 'SirVer/ultisnips'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'derekwyatt/vim-protodef'
+Plug 'scrooloose/nerdtree'
+"Plug 'fholgado/minibufexpl.vim'
+Plug 'gcmt/wildfire.vim'
+Plug 'sjl/gundo.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'suan/vim-instant-markdown'
+Plug 'lilydjwg/fcitx.vim'
+"Plug 'python-mode/python-mode'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+"Plug 'junegunn/fzf'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'szw/vim-maximizer'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-repeat' 
+Plug 'maralla/completor.vim'
+"Plug 'davidhalter/jedi-vim.git' 
 " 插件列表结束
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
-set rtp+=~/.vim/bundle/ctrlp.vim
+"set rtp+=~/.vim/bundle/ctrlp.vim
 
 " 配色方案
 set background=dark
@@ -213,26 +214,26 @@ let NERDTreeIgnore = ['\.pyc$']
 " YCM 补全菜单配色
 " 设置python解释器，不要设置为绝对路径
 "let g:ycm_python_binary_path="/opt/py_virtualenvs/progress_management/bin/python"
-let g:ycm_python_binary_path="python"
-let g:ycm_server_python_interpreter = 'python'
-" 补全功能在注释中同样有效
-let g:ycm_complete_in_comments=1
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
-let g:ycm_confirm_extra_conf=0
-" 开启 YCM 标签补全引擎
-let g:ycm_collect_identifiers_from_tags_files=1
-" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
-inoremap <leader>; <C-x><C-o>
-" 补全内容不以分割子窗口形式出现，只显示补全列表
-set completeopt-=preview
-" 从第一个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=1
-" 禁止缓存匹配项，每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0
-" 语法关键字补全          
-let g:ycm_seed_identifiers_with_syntax=1
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
-nnoremap <leader>gm :YcmCompleter GetDoc<CR>
+"let g:ycm_python_binary_path="python"
+"let g:ycm_server_python_interpreter = 'python'
+"" 补全功能在注释中同样有效
+"let g:ycm_complete_in_comments=1
+"" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+"let g:ycm_confirm_extra_conf=0
+"" 开启 YCM 标签补全引擎
+"let g:ycm_collect_identifiers_from_tags_files=1
+"" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+"inoremap <leader>; <C-x><C-o>
+"" 补全内容不以分割子窗口形式出现，只显示补全列表
+"set completeopt-=preview
+"" 从第一个键入字符就开始罗列匹配项
+"let g:ycm_min_num_of_chars_for_completion=1
+"" 禁止缓存匹配项，每次都重新生成匹配项
+"let g:ycm_cache_omnifunc=0
+"" 语法关键字补全          
+"let g:ycm_seed_identifiers_with_syntax=1
+"nnoremap <leader>gd :YcmCompleter GoTo<CR>
+"nnoremap <leader>gm :YcmCompleter GetDoc<CR>
 
 "" Override go-to.definition key shortcut to Ctrl-]
 "let g:pymode_rope_goto_definition_bind = "<leader>gd"
@@ -240,6 +241,15 @@ nnoremap <leader>gm :YcmCompleter GetDoc<CR>
 "let g:pymode_run_bind =  "<leader>rp"
 "" Override view python doc key shortcut to Ctrl-Shift-d
 "let g:pymode_doc_bind =  "<leader>vd" 
+
+" set jedi-vim
+"let g:jedi#goto_command = "<leader>d"
+"let g:jedi#goto_assignments_command = "<leader>g"
+"let g:jedi#goto_definitions_command = ""
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+"let g:jedi#completions_command = "<leader>;"
+"let g:jedi#rename_command = "<leader>r"
 
 "fugitive指令映射
 map <leader>gb  :Gblame<CR>
@@ -311,6 +321,10 @@ nmap <C-a> gg<S-v>G
 
 "以python脚本运行
 nmap <F5> !python %<CR>
+
+"命令模式快捷键
+nnoremap <F2> <Esc><S-:>
+
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
