@@ -93,6 +93,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'szw/vim-maximizer'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-repeat' 
+Plugin 'webdesus/polymer-ide.vim'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
