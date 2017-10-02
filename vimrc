@@ -18,14 +18,14 @@ nmap <leader>ll g_
 nmap <leader>lc ''
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "*y
-nmap <Leader>p "*p
+map <Leader>p "*p
 nmap <leader>d "*d
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 " 定义快捷键保存所有窗口内容并退出 vim
-nmap <Leader>WQ :wa<CR>:q<CR>
+"nmap <Leader>WQ :wa<CR>:q<CR>
 " 不做任何保存，直接退出 vim
 nmap <Leader>Q :qa!<CR>
 " 依次遍历子窗口
@@ -50,6 +50,45 @@ set ignorecase
 set nocompatible
 " vim 自身命令行模式智能补全
 set wildmenu
+
+"设置PYTHONPATH
+python << endpython
+import vim, os
+def walk(top, topdown=True, onerror=None, followlinks=False, maxdepth=None):
+    islink, join, isdir = os.path.islink, os.path.join, os.path.isdir
+
+    try:
+        names = os.listdir(top)
+    except OSError, err:
+        if onerror is not None:
+            onerror(err)
+        return
+
+    dirs, nondirs = [], []
+    for name in names:
+        if isdir(join(top, name)):
+            dirs.append(name)
+        else:
+            nondirs.append(name)
+
+    if topdown:
+        yield top, dirs, nondirs
+
+    if maxdepth is None or maxdepth > 1:
+        for name in dirs:
+            new_path = join(top, name)
+            if followlinks or not islink(new_path):
+                for x in walk(new_path, topdown, onerror, followlinks, None if maxdepth is None else maxdepth-1):
+                    yield x
+    if not topdown:
+        yield top, dirs, nondirs
+
+import sys
+package_path_list = []
+for dirpath, dirnames, filenames in walk(os.getcwd(), 2):
+    if '__init__.py' in filenames:
+        sys.path.append(os.path.dirname(dirpath))
+endpython
 
 " plug 环境设置
 filetype off
@@ -87,13 +126,20 @@ Plug 'lilydjwg/fcitx.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-"Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'szw/vim-maximizer'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-repeat' 
 Plug 'maralla/completor.vim'
-"Plug 'davidhalter/jedi-vim.git' 
+"Plug  'webdesus/polymer-ide.vim', { 'do': 'npm install' }
+Plug 'davidhalter/jedi-vim' 
+Plug 'mileszs/ack.vim' 
+Plug 'pangloss/vim-javascript'
+Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-easytags'
 " 插件列表结束
 call plug#end()
 filetype plugin indent on
@@ -248,7 +294,7 @@ let NERDTreeIgnore = ['\.pyc$']
 "let g:jedi#goto_definitions_command = ""
 "let g:jedi#documentation_command = "K"
 "let g:jedi#usages_command = "<leader>n"
-"let g:jedi#completions_command = "<leader>;"
+"let g:jedi#completions_command = "<C-Space>"
 "let g:jedi#rename_command = "<leader>r"
 
 "fugitive指令映射
@@ -291,7 +337,7 @@ map <C-H> <Esc>:bnext<CR>
 map <C-L> <Esc>:bprevious<CR>
 
 " 自动切换当前工作目录至打开的文件
-autocmd BufEnter * silent! lcd %:p:h
+"autocmd BufEnter * silent! lcd %:p:h
 
 " 设置自动探测文件编码类型
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -327,7 +373,7 @@ nnoremap <F2> <Esc><S-:>
 
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+"cmap w!! w !sudo tee > /dev/null %
 
 "syntastic插件设置
 "set statusline+=%#warningmsg#
@@ -349,3 +395,20 @@ set tw=200
 
 " 搜索到结尾不自动重头开始搜索 
 set nowrapscan
+let g:ctrlp_use_caching = 1
+
+"fzf.vim
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+"不要自动切换pwd
+set noautochdir
+let NERDTreeChDirMode=0
+
